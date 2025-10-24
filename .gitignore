@@ -4,7 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/*
 #.idea/compiler.xml
 #.idea/misc.xml
 #.idea/encodings.xml
@@ -40,3 +40,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### project ###
+.properties
