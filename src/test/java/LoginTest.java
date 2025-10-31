@@ -18,4 +18,19 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
     }
+
+    @Test
+    public void testLockedUser() {
+        final String lockedUserLogin = "locked_out_user";
+        final String password = "secret_sauce";
+        final String expectedErrorMessage = "Epic sadface: Sorry, this user has been locked out.";
+
+        getDriver().findElement(By.id("user-name")).sendKeys(lockedUserLogin);
+        getDriver().findElement(By.id("password")).sendKeys(password);
+        getDriver().findElement(By.id("login-button")).click();
+
+        String actualErrorMessage = getDriver().findElement(By.cssSelector("h3[data-test='error']")).getText();
+
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
 }
