@@ -1,5 +1,3 @@
-package common;
-
 public class ConflictsTraining {
 
     public void testConflict() {
