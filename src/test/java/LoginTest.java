@@ -32,5 +32,7 @@ public class LoginTest extends BaseTest {
         String actualErrorMessage = getDriver().findElement(By.cssSelector("h3[data-test='error']")).getText();
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+        Assert.assertTrue(getDriver().findElement(By.id("user-name")).isEnabled());
+        Assert.assertTrue(getDriver().findElement(By.id("password")).isEnabled());
     }
 }
