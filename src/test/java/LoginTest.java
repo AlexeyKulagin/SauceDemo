@@ -35,4 +35,15 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(getDriver().findElement(By.id("user-name")).isEnabled());
         Assert.assertTrue(getDriver().findElement(By.id("password")).isEnabled());
     }
+
+    @Test
+    public void testEmptyLoginData() {
+        final String expectedErrorMessage = "Epic sadface: Username is required";
+
+        getDriver().findElement(By.id("login-button")).click();
+
+        String actualErrorMessage = getDriver().findElement(By.cssSelector("h3[data-test='error']")).getText();
+
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
 }
