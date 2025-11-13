@@ -1,9 +1,13 @@
 package common;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
@@ -32,6 +36,11 @@ final class ProjectUtils {
             for (String option : options.split(";")) {
                 chromeOptions.addArguments(option);
             }
+        }
+
+        String chromeDriverPath = getValue("webdriver.chrome.driver");
+        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         }
     }
 
