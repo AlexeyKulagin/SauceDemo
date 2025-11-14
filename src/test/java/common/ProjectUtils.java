@@ -19,8 +19,14 @@ final class ProjectUtils {
         properties = new Properties();
 
         if (!isRunCI()) {
-            InputStream inputStream = ProjectUtils.class.getClassLoader().getResourceAsStream(".properties");
             try {
+                InputStream inputStream = ProjectUtils.class.getClassLoader().getResourceAsStream(".properties");
+                if (inputStream == null) {
+                    log("The \u001B[31m.properties\u001B[0m file not found in src/test/resources/ directory.");
+                    log("You need to create it from .properties.TEMPLATE file.");
+                    System.exit(1);
+                }
+
                 properties.load(inputStream);
             } catch (IOException ignore) {
             }
