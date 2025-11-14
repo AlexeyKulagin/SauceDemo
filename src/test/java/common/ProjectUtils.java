@@ -33,6 +33,11 @@ final class ProjectUtils {
                 chromeOptions.addArguments(option);
             }
         }
+
+        String chromeDriverPath = getValue("webdriver.chrome.driver");
+        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
+            System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        }
     }
 
     private static String convertPropToEnvName(String propName) {
