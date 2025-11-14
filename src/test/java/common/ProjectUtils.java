@@ -35,7 +35,7 @@ final class ProjectUtils {
         }
 
         String chromeDriverPath = getValue("webdriver.chrome.driver");
-        if (chromeDriverPath != null && !chromeDriverPath.isEmpty()) {
+        if (chromeDriverPath != null) {
             System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         }
     }
