@@ -46,4 +46,19 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
     }
+
+    @Test
+    public void testInvalidPassword() {
+        final String standardUserLogin = "standard_user";
+        final String invalidPassword = "standard_user";
+        final String expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
+
+        getDriver().findElement(By.id("user-name")).sendKeys(standardUserLogin);
+        getDriver().findElement(By.id("password")).sendKeys(invalidPassword);
+        getDriver().findElement(By.id("login-button")).click();
+
+        String actualErrorMessage = getDriver().findElement(By.cssSelector("h3[data-test='error']")).getText();
+
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
 }
